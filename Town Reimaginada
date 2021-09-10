@@ -431,6 +431,14 @@ init_custom_map()
 	shootabler( ( 2495, 60.2994, 360.876 ), (0, 180, 0) );
 	shootable( ( 1990.89, 942.905, -59.678 ), (0, 180, 0) ); 
 	shootable( ( 1310.1, -225.9, -40.375 ), (0, 170, 0) );
+	shootable( ( 1310.1, -225.9, -40.375 ), (0, 170, 0) );
+	shootable( ( 1310.1, -225.9, -40.375 ), (0, 170, 0) );
+	shootable( ( 1310.1, -225.9, -40.375 ), (0, 170, 0) );
+	shootable( ( 1310.1, -225.9, -40.375 ), (0, 170, 0) );
+	shootable( ( 1310.1, -225.9, -40.375 ), (0, 170, 0) );
+	shootable( ( 1310.1, -225.9, -40.375 ), (0, 170, 0) );
+	shootable( ( 1010.1, -250.9, -40.375 ), (0, 170, 0) );
+	shootable( ( 1810.1, -250.9, -40.375 ), (0, 170, 0) );
 	perk_system( "script_model", ( 1856, -810.722, -55.875), "zombie_vending_tombstone_on", ( 0, 180, 0 ), "custom", "mus_perks_deadshot_sting", "Deadshot", 2000, "revive_light", "deadshot" );
 	perk_system( "script_model", ( 2460, -780, -55.875 ), "zombie_vending_tombstone_on", ( 0, 225, 0 ), "custom", "mus_perks_doubletap_sting", "Burn Heart", 2500, "jugger_light", "Burn_Heart" );
 	perk_system( "script_model", ( 901.86, -1575.574, -47.875 ), "zombie_vending_tombstone_on", ( 0, 180, 0 ), "custom", "mus_perks_deadshot_sting", "Widow's Wine", 4000, "tombstone_light", "WIDOWS_WINE" );
@@ -486,17 +494,17 @@ shootable(origin, angles)
 teddys()
 {
 	self endon( "shot" );
-	teddysNeeded = 2;
-	teddysCollected = 0;
+	level.teddysNeeded = 2;
+	level.teddysCollected = 0;
 	while( 1 )
 	{
 		self waittill( "damage", idamage, attacker, idflags, vpoint, type, victim, vdir, shitloc, psoffsettime, sweapon );
 		if( self.health <= 0 )
 		{
-			teddysCollected++;
-			iprintlnbold("Teddys encontrados do Easter Egg de perks [" + teddysCollected + "/2]");
+			level.teddysCollected++;
+			iprintlnbold("Teddys encontrados do Easter Egg de perks [" + level.teddysCollected + "/2]");
 			self delete();
-			if (teddysCollected >= teddysNeeded)
+			if (level.teddysCollected >= level.teddysNeeded)
 			{
 				self thread maps/mp/zombies/_zm_audio_announcer::leaderdialog( "boxmove" );
 				wait 2;
@@ -522,18 +530,18 @@ shootabler(origin, angles)
 
 musica()
 {
-	self endon( "shott" );
-	teddysNeededd = 2;
-	teddysCollectedd = 0;
+	self endon( "shot" );
+	level.teddysNeededd = 2;
+	level.teddysCollectedd = 0;
 	while( 1 )
 	{
 		self waittill( "damage", idamage, attacker, idflags, vpoint, type, victim, vdir, shitloc, psoffsettime, sweapon );
 		if( self.health <= 0 )
 		{
-			teddysCollectedd++;
-			iprintlnbold("Teddys encontrados para musica [" + teddysCollectedd + "/2]");
+			level.teddysCollectedd++;
+			iprintlnbold("Teddys encontrados para musica[" + level.teddysCollectedd + "/2]");
 			self delete();
-			if (teddysCollectedd >= teddysNeededd)
+			if (level.teddysCollectedd >= level.teddysNeededd)
 			{
 				self thread maps/mp/zombies/_zm_audio_announcer::leaderdialog( "boxmove" );
 				wait 2;
