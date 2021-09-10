@@ -1,3 +1,4 @@
+//Decompiled with SeriousHD-'s GSC Decompiler
 #include maps/mp/_utility;
 #include maps/mp/_visionset_mgr;
 #include maps/mp/_music;
@@ -29,19 +30,22 @@ onplayerconnect()
 	}
 
 }
+
 drop()
 {
-	level endon( "end_game" );
-	self endon( "disconnect" );
-	if( self jumpbuttonpressed() )
+	level endon("end_game");
+	self endon("disconnect");
+	for (;;) 
 	{
-			duration = 0;
-		while( self jumpbuttonpressed() )
-			{
-				duration += 1;
-				if (duration == 200) 
+	if (self meleebuttonpressed())
+	{
+		duration = 0;
+		while (self meleebuttonpressed()) 
+		{
+			duration += 1;
+				if (duration == 25) 
 				{
-					self playsound( "mus_zmb_secret_song" );
+				self playsound( "mus_zmb_secret_song" );
 				break;
 				}
 				wait 0.05;
@@ -49,4 +53,4 @@ drop()
 		}
 		wait 0.05;
 	}
-}
+	}
