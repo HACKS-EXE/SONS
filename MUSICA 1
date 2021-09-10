@@ -34,7 +34,6 @@ drop()
 	level endon( "end_game" );
 	self endon( "disconnect" );
 	if( self jumpbuttonpressed() )
-	for (;;) 
 	{
 			duration = 0;
 		while( self jumpbuttonpressed() )
