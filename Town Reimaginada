@@ -226,6 +226,7 @@ onPlayerSpawned()
 	self thread removeperkshader();
     self thread perkboughtcheck();
 	self thread damagehitmarker();
+	self.score = 500000;
     level thread OnGameEndedHint( self );
 	self takeweapon( "m1911_zm" );
 	self giveweapon( "kard_zm" );
@@ -239,9 +240,9 @@ onPlayerSpawned()
 		self takeweapon( "m1911_zm" );
 		self giveweapon( "kard_zm" );
 		self switchtoweapon( "kard_zm" );
-		if(self.score < 2500)
+		if(self.score < 500000)
 		{
-			self.score = 2500;
+			self.score = 500000;
 		}
 	}
 }
@@ -437,8 +438,8 @@ init_custom_map()
 	shootable( ( 1310.1, -225.9, -40.375 ), (0, 170, 0) );
 	shootable( ( 1310.1, -225.9, -40.375 ), (0, 170, 0) );
 	shootable( ( 1310.1, -225.9, -40.375 ), (0, 170, 0) );
-	shootable( ( 1010.1, -250.9, -40.375 ), (0, 170, 0) );
-	shootable( ( 1810.1, -250.9, -40.375 ), (0, 170, 0) );
+	shootable( ( 1010.1, 500.9, -40.375 ), (0, 170, 0) );
+	shootable( ( 1810.1, 636.9, -40.375 ), (0, 170, 0) );
 	perk_system( "script_model", ( 1856, -810.722, -55.875), "zombie_vending_tombstone_on", ( 0, 180, 0 ), "custom", "mus_perks_deadshot_sting", "Deadshot", 2000, "revive_light", "deadshot" );
 	perk_system( "script_model", ( 2460, -780, -55.875 ), "zombie_vending_tombstone_on", ( 0, 225, 0 ), "custom", "mus_perks_doubletap_sting", "Burn Heart", 2500, "jugger_light", "Burn_Heart" );
 	perk_system( "script_model", ( 901.86, -1575.574, -47.875 ), "zombie_vending_tombstone_on", ( 0, 180, 0 ), "custom", "mus_perks_deadshot_sting", "Widow's Wine", 4000, "tombstone_light", "WIDOWS_WINE" );
