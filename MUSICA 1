@@ -1,0 +1,53 @@
+#include maps/mp/_utility;
+#include maps/mp/_visionset_mgr;
+#include maps/mp/_music;
+#include common_scripts/utility;
+#include maps/mp/gametypes_zm/_hud_util;
+#include maps/mp/gametypes_zm/_hud_message;
+#include maps/mp/gametypes_zm/_gv_actions;
+#include maps/mp/zombies/_zm;
+#include maps/mp/zombies/_zm_utility;
+#include maps/mp/zombies/_zm_weapons;
+#include maps/mp/zombies/_zm_audio;
+#include maps/mp/animscripts/zm_combat;
+#include maps/mp/animscripts/zm_utility;
+#include maps/mp/animscripts/utility;
+#include maps/mp/animscripts/shared;
+init()
+{
+	precacheshader( "damage_feedback" );
+	level thread onplayerconnect();
+
+}
+
+onplayerconnect()
+{
+	for(;;)
+	{
+	level waittill( "connected", player );
+	player thread drop();
+	}
+
+}
+drop()
+{
+	level endon( "end_game" );
+	self endon( "disconnect" );
+	if( self jumpbuttonpressed() )
+	for (;;) 
+	{
+			duration = 0;
+		while( self jumpbuttonpressed() )
+			{
+				duration += 1;
+				if (duration == 200) 
+				{
+					self playsound( "mus_zmb_secret_song" );
+				break;
+				}
+				wait 0.05;
+			}
+		}
+		wait 0.05;
+	}
+}
